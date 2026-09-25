@@ -1,1 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Pressbox Media | Sports Photography</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #000;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+.pressbox {
+  width: 100%;
+  min-height: 100vh;
+  padding: 35px 20px 45px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #3a3a3a 0%,
+      #202020 42%,
+      #0b0b0b 78%,
+      #000 100%
+    );
+}
+
+/* HEADLINE */
+
+.headline {
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.headline small {
+  display: block;
+  margin-top: 8px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  opacity: .55;
+}
+
+/* GALLERY */
+
+.gallery {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stage {
+  position: relative;
+  width: min(78vw, 1050px);
+  aspect-ratio: 16 / 9;
+
+  perspective: 1500px;
+  perspective-origin: center center;
+}
+
+.deck {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+/* PHOTO CARDS */
+
+.card {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform .65s cubic-bezier(.2,.75,.25,1),
+    opacity .5s ease,
+    filter .5s ease;
+
+  border-radius: 18px;
+  overflow: hidden;
+
+  background: #111;
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.55),
+    0 10px 25px rgba(0,0,0,.4);
+}
+
+.card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ARROWS */
+
+.nav {
+  flex: 0 0 52px;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25);
+
+  background: rgba(255,255,255,.08);
+
+  color: #fff;
+
+  font-size: 38px;
+  line-height: 42px;
+
+  cursor: pointer;
+
+  z-index: 500;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.nav:hover {
+  background: rgba(255,255,255,.18);
+  transform: scale(1.06);
+}
+
+/* COUNTER */
+
+.counter {
+  text-align: center;
+
+  margin-top: 28px;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+
+  opacity: .65;
+}
+
+/* DOTS */
+
+.dots {
+  display: flex;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-top: 16px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.3);
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+.dot.active {
+  background: #fff;
+  transform: scale(1.35);
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .pressbox {
+    min-height: 500px;
+    padding: 25px 10px 35px;
+  }
+
+  .headline {
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .headline small {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .gallery {
+    gap: 8px;
+  }
+
+  .stage {
+    width: 82vw;
+  }
+
+  .nav {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  .counter {
+    margin-top: 20px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="pressbox">
+
+  <div class="headline">
+    <div>SPORTS STORYTELLING THROUGH A DIFFERENT LENS</div>
+    <small>AUTHENTIC MOMENTS. LASTING IMPACT.</small>
+  </div>
+
+  <div class="gallery">
+
+    <button
+      class="nav prev"
+      id="prev"
+      type="button"
+      aria-label="Previous photo">
+      ‹
+    </button>
+
+    <div class="stage">
+
+      <div class="deck" id="deck">
+
+        <div class="card">
+          <img
+            src="images/01.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/02.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/03.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/04.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/05.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/06.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/07.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/08.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/09.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/10.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/11.jpg"
+            alt="Sports photography">
+        </div>
+
+        <div class="card">
+          <img
+            src="images/12.jpg"
+            alt="Sports photography">
+        </div>
+
+      </div>
+
+    </div>
+
+    <button
+      class="nav next"
+      id="next"
+      type="button"
+      aria-label="Next photo">
+      ›
+    </button>
+
+  </div>
+
+  <div
+    class="counter"
+    id="counter">
+    01 / 12
+  </div>
+
+  <div
+    class="dots"
+    id="dots">
+  </div>
+
+</div>
+
+
+<script>
+
+(function () {
+
+  const cards =
+    Array.from(
+      document.querySelectorAll(".card")
+    );
+
+  const dotsContainer =
+    document.getElementById("dots");
+
+  const counter =
+    document.getElementById("counter");
+
+  let current = 0;
+
+
+  /* CREATE DOTS */
+
+  cards.forEach(function (card, index) {
+
+    const dot =
+      document.createElement("button");
+
+    dot.className = "dot";
+
+    dot.type = "button";
+
+    dot.setAttribute(
+      "aria-label",
+      "Go to photo " + (index + 1)
+    );
+
+    dot.addEventListener(
+      "click",
+      function () {
+
+        current = index;
+
+        render();
+
+      }
+    );
+
+    dotsContainer.appendChild(dot);
+
+  });
+
+
+  const dots =
+    Array.from(
+      document.querySelectorAll(".dot")
+    );
+
+
+  /* RENDER CAROUSEL */
+
+  function render() {
+
+    cards.forEach(
+      function (card, index) {
+
+        let offset =
+          index - current;
+
+
+        if (
+          offset >
+          cards.length / 2
+        ) {
+
+          offset -= cards.length;
+
+        }
+
+
+        if (
+          offset <
+          -cards.length / 2
+        ) {
+
+          offset += cards.length;
+
+        }
+
+
+        const distance =
+          Math.abs(offset);
+
+
+        card.style.opacity =
+          distance > 4
+            ? "0"
+            : "1";
+
+
+        card.style.zIndex =
+          String(100 - distance);
+
+
+        card.style.pointerEvents =
+          offset === 0
+            ? "auto"
+            : "none";
+
+
+        const x =
+          offset * 28;
+
+
+        const z =
+          -distance * 150;
+
+
+        const rotation =
+          offset * -17;
+
+
+        const scale =
+          offset === 0
+            ? 1
+            : Math.max(
+                .75,
+                1 - distance * .07
+              );
+
+
+        card.style.transform =
+          "translate(-50%, -50%) " +
+          "translateX(" + x + "%) " +
+          "translateZ(" + z + "px) " +
+          "rotateY(" + rotation + "deg) " +
+          "scale(" + scale + ")";
+
+
+        card.style.filter =
+          offset === 0
+
+            ? "brightness(1)"
+
+            : "brightness(" +
+              Math.max(
+                .5,
+                1 - distance * .12
+              ) +
+              ")";
+
+      }
+    );
+
+
+    /* UPDATE COUNTER */
+
+    counter.textContent =
+      String(current + 1)
+        .padStart(2, "0") +
+      " / " +
+      String(cards.length)
+        .padStart(2, "0");
+
+
+    /* UPDATE DOTS */
+
+    dots.forEach(
+      function (dot, index) {
+
+        dot.classList.toggle(
+          "active",
+          index === current
+        );
+
+      }
+    );
+
+  }
+
+
+  /* NEXT */
+
+  document
+    .getElementById("next")
+    .addEventListener(
+      "click",
+      function () {
+
+        current =
+          (current + 1) %
+          cards.length;
+
+        render();
+
+      }
+    );
+
+
+  /* PREVIOUS */
+
+  document
+    .getElementById("prev")
+    .addEventListener(
+      "click",
+      function () {
+
+        current =
+          (
+            current -
+            1 +
+            cards.length
+          ) %
+          cards.length;
+
+        render();
+
+      }
+    );
+
+
+  /* KEYBOARD */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key ===
+        "ArrowRight"
+      ) {
+
+        current =
+          (current + 1) %
+          cards.length;
+
+        render();
+
+      }
+
+
+      if (
+        event.key ===
+        "ArrowLeft"
+      ) {
+
+        current =
+          (
+            current -
+            1 +
+            cards.length
+          ) %
+          cards.length;
+
+        render();
+
+      }
+
+    }
+  );
+
+
+  /* INITIAL STATE */
+
+  render();
+
+})();
+
+</script>
+
+</body>
+</html>
